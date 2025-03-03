@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Book List</title>
+    </head>
+    <body>
+        <a href="{% url 'add_book'%}">
+            <button>Add book</button>
+        </a><br><br>
+        {% for book in books %}
+            <div style="margin-bottom: 5px; padding: 10px; background-color:grey">
+                {{ book.id }}<br>
+                {{ book.title }} ({{ book.published_year }})<br>
+                {{ book.author }}<br>
+                {{ book.description }}<br>
+                <a href="{% url 'update_book' book.id %}">
+                    <button>Update</button>
+                </a>
+                <a href="{% url 'delete_book' book.id %}">
+                    <button>Delete</button>
+                </a>
+                
+            </div>
+        {% endfor %}
+    </body>
+</html>
